@@ -1,0 +1,21 @@
+<h2>New Message</h2>
+
+<% if (errors.length) { %>
+  <div class="errors">
+    <ul>
+      <% errors.forEach(e => { %><li><%= e.msg %></li><% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form method="POST" action="/messages/new" class="form">
+  <label>Title
+    <input name="title" value="<%= data.title || '' %>" required maxlength="200" />
+  </label>
+
+  <label>Message
+    <textarea name="body" rows="6" required><%= data.body || '' %></textarea>
+  </label>
+
+  <button type="submit">Post</button>
+</form>

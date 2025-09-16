@@ -1,0 +1,29 @@
+<h2>All Messages</h2>
+
+<% if (messages.length === 0) { %>
+  <p>No messages yet. Be the first!</p>
+<% } %>
+
+<ul class="messages">
+  <% messages.forEach(m => { %>
+    <li class="message">
+      <h3><%= m.title %></h3>
+      <p><%= m.body %></p>
+
+      <% if (canSeeMeta) { %>
+        <div class="meta">
+          by <strong><%= m.first_name ? (m.first_name + ' ' + m.last_name) : 'Unknown' %></strong>
+          on <%= dayjs(m.created_at).format('YYYY-MM-DD HH:mm') %>
+        </div>
+      <% } else { %>
+        <div class="meta">by <em>Member</em></div>
+      <% } %>
+
+      <% if (currentUser && currentUser.is_admin) { %>
+        <form method="POST" action="/messages/<%= m.id %>?_method=DELETE">
+          <button type="submit" class="danger">Delete</button>
+        </form>
+      <% } %>
+    </li>
+  <% }) %>
+</ul>

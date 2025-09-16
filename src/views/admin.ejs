@@ -1,0 +1,11 @@
+<h2>Admin Access</h2>
+<p>Enter the admin passcode to enable admin privileges.</p>
+
+<% if (error) { %><div class="errors"><p><%= error %></p></div><% } %>
+
+<form method="POST" action="/admin" class="form">
+  <label>Admin passcode
+    <input name="passcode" type="password" required />
+  </label>
+  <button type="submit">Become Admin</button>
+</form>

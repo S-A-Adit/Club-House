@@ -1,0 +1,33 @@
+<h2>Sign up</h2>
+
+<% if (errors.length) { %>
+  <div class="errors">
+    <ul>
+      <% errors.forEach(e => { %><li><%= e.msg %></li><% }) %>
+    </ul>
+  </div>
+<% } %>
+
+<form method="POST" action="/signup" class="form">
+  <label>First name
+    <input name="firstName" value="<%= data.firstName || '' %>" required />
+  </label>
+
+  <label>Last name
+    <input name="lastName" value="<%= data.lastName || '' %>" required />
+  </label>
+
+  <label>Email
+    <input type="email" name="email" value="<%= data.email || '' %>" required />
+  </label>
+
+  <label>Password
+    <input type="password" name="password" required />
+  </label>
+
+  <label>Confirm password
+    <input type="password" name="confirmPassword" required />
+  </label>
+
+  <button type="submit">Create account</button>
+</form>

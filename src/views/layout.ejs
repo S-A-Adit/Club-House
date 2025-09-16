@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Members Only Club</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="container">
+    <h1><a href="/">Members Only Club</a></h1>
+    <nav>
+      <% if (!currentUser) { %>
+        <a href="/signup">Sign up</a>
+        <a href="/login">Log in</a>
+      <% } else { %>
+        <span>Hi, <%= currentUser.first_name %>!</span>
+        <a href="/messages/new">Create a new message</a>
+        <a href="/join">Join the club</a>
+        <a href="/admin">Become admin</a>
+        <form method="POST" action="/logout" style="display:inline;">
+          <button type="submit" class="logout-link">Log out</button>
+        </form>
+      <% } %>
+    </nav>
+    <hr/>
+  </header>
+
+  <main class="container">
+    <%- body %>
+  </main>
+</body>
+</html>

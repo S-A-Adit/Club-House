@@ -1,0 +1,18 @@
+<h2>Log in</h2>
+
+<% if (query.error) { %>
+  <div class="errors"><p>Invalid email or password</p></div>
+<% } %>
+<% if (query.welcome) { %>
+  <p>Account created! You can log in now.</p>
+<% } %>
+
+<form method="POST" action="/login" class="form">
+  <label>Email
+    <input name="email" type="email" required />
+  </label>
+  <label>Password
+    <input name="password" type="password" required />
+  </label>
+  <button type="submit">Log in</button>
+</form>
